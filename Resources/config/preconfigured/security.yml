@@ -1,0 +1,25 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        salesforce:
+            id: NoMagic\Bundle\SalesForceOauthBundle\Security\Core\User\SalesForceUserProvider
+
+    firewalls:
+        secured_area:
+            anonymous: ~
+            logout:
+                path: /logout
+                target: /login
+            oauth:
+                resource_owners:
+                    salesforce: /login/check-salesforce
+                    salesforce_community: /login/check-salesforce-community
+                login_path:        /
+                use_forward:       false
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: NoMagic\Bundle\SalesForceOauthBundle\Security\Core\User\SalesForceUserProvider

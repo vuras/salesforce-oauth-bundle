@@ -1,0 +1,27 @@
+{
+    "name" : "nomagic/salesforce-oauth-bundle",
+    "description" : "Bundle for SalesForce OAuth2 authentification",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Artur Butov",
+        "email" : "artur.butov@nomagic.com"
+    }],
+    "keywords" : ["salesforce", "rest", "api", "oauth2"],
+    "license" : "proprietary",
+    "require": {
+        "php": ">=7.0",
+        "hwi/oauth-bundle": "^0.6",
+        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/httplug-bundle": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "SalesForceOauthBundle\\" : ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SalesForceOauthBundle\\Tests\\": "Tests/"
+        }
+    }
+}

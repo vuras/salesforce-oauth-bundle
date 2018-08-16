@@ -1,0 +1,8 @@
+monolog:
+    channels: [ external_request_logger ]
+    handlers:
+        external_request_logger:
+            level: info
+            type: stream
+            path: '%kernel.logs_dir%/%kernel.environment%.external_requests.log'
+            channels: [external_request_logger]

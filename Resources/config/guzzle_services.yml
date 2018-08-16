@@ -1,0 +1,19 @@
+services:
+    GuzzleHttp\MessageFormatter:
+        arguments:
+            - '%log_format%'
+
+    GuzzleHttp\HandlerStack:
+        factory: ['NoMagic\Bundle\SalesForceOauthBundle\HandlerStack\HandlerStackFactory', create ]
+        arguments:
+            - '@monolog.logger.external_request_logger'
+            - '@GuzzleHttp\MessageFormatter'
+
+    # Guzzle client made as a service and TLS 1.2 is set as default connection type
+    GuzzleHttp\Client:
+        arguments:
+            -
+                curl:
+                    # CURLOPT_SSLVERSION : CURL_SSLVERSION_TLSv1_2
+                    32: 6
+                handler: '@GuzzleHttp\HandlerStack'
